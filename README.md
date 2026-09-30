@@ -9,8 +9,12 @@
 
 Webアプリケーションの設計・実装、データベース運用、レガシーシステムのモダナイゼーション、ファネル分析に基づくコンバージョン率改善などのプロジェクト実績をまとめています。
 
-- **Role**: ソフトウェアエンジニア (Software Engineer / Backend)
-- **Tech Stack**: C# (.NET 9 / ASP.NET Core), DDD, AWS (ECS, Aurora MySQL), Terraform, Datadog
+- **Role**: ソフトウェアエンジニア (Software Engineer)
+- **Tech Stack**:
+  - **Frontend**: TypeScript, Svelte, npm, pnpm
+  - **Backend**: C# (.NET 9 / ASP.NET Core), Entity Framework Core, DDD
+  - **Cloud / Infra**: AWS (ECS Fargate, Aurora MySQL, Lambda), Terraform, Docker
+  - **Monitoring / Data**: Datadog (APM, Logs, Metrics), Clarity, SQL
 
 ---
 
@@ -61,7 +65,8 @@ Webアプリケーションの設計・実装、データベース運用、レ�
 
 ## 技術スタック (Tech Stack)
 
-- **言語・フレームワーク**: C# (.NET 9, ASP.NET Core), Entity Framework Core
+- **フロントエンド**: TypeScript, Svelte, HTML/CSS, npm, pnpm
+- **バックエンド**: C# (.NET 9, ASP.NET Core), Entity Framework Core
 - **設計手法**: ドメイン駆動設計 (DDD), レイヤードアーキテクチャ, RESTful API
 - **インフラ・クラウド**: AWS (ECS Fargate, Aurora MySQL, Lambda), Terraform, Docker
 - **計測・運用監視**: Datadog (APM, Logs, Metrics), Clarity, SQL
