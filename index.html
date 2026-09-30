@@ -220,7 +220,7 @@
       </div>
       <p class="bio">
         ソフトウェアエンジニア。<br>
-        Webアプリケーション（バックエンド／フロントエンド）の設計・実装、リレーショナルデータベース運用、システムのモダナイゼーション、ファネル分析に基づくコンバージョン率改善などを担当。
+        Webアプリケーション（バックエンド／フロントエンド）の設計・実装から、自動テストやCI/CDを通じた開発生産性の向上、データベース運用、レガシーシステムのモダナイゼーション、ファネル分析に基づくコンバージョン率改善などを担当。日常業務ではインターン生のメンターやコードレビューを通じた品質担保・オンボーディング支援も行っています。
       </p>
     </header>
 
@@ -256,6 +256,11 @@
               <td class="num">ダウンタイム 0</td>
               <td>.NET 6から9+DDDへの無停止移行、DB共有下での互換性担保</td>
             </tr>
+            <tr>
+              <td>品質・生産性</td>
+              <td class="num">テスト自動化 & CI/CD</td>
+              <td>Vitest / Playwright導入、GitHub Actionsによる自動検証・デプロイ</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -273,7 +278,7 @@
           <h4>計測基盤の修正</h4>
           <p>
             当初のログにはクローラーやボットのアクセスが混入しており、CVRの分母・分子が歪んでいた。
-            改善施策に先立ち、ボット除外ロジックを整備して正しい数値を計測できる土台を作った。
+            改善施策に先立ち、ボット除外ロジックの実装やGoogle Tag Manager (GTM)・Meta Pixelなどのタグ発火タイミング・カスタムイベント設計を整理し、正しい数値を計測できる土台を作った。
           </p>
 
           <h4>施策の変遷と学び</h4>
@@ -339,7 +344,28 @@
         </article>
 
         <article>
-          <h3>3. 計測基盤の整備とデータ活用</h3>
+          <h3>3. 自動テスト・CI/CD環境の整備とチーム支援</h3>
+          <p>
+            開発速度と品質を両立させるための自動化基盤およびチーム支援の取り組み。
+          </p>
+          <ul>
+            <li>
+              <strong>フロントエンドテスト自動化:</strong><br>
+              Vitest による単体・コンポーネントテスト、Playwright による主要ユーザー導線のE2Eテストを導入。変更時のデグレード（先祖返り）を早期検知し、手動リグレッション確認の負荷を低減した。
+            </li>
+            <li>
+              <strong>CI/CDパイプライン運用:</strong><br>
+              GitHub Actions を用いて、Lint、自動テスト、ビルド検証、ステージングおよび本番環境へのデプロイワークフローを自動化。安全なリリースフローを維持。
+            </li>
+            <li>
+              <strong>メンタリングとコードレビュー:</strong><br>
+              インターン生のメンターを担当し、タスクの分解や設計相談、コードレビューを実施。実装品質の担保とともに、早期の自律的な開発立ち上がりを支援した。
+            </li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>4. 計測基盤の整備とデータ活用</h3>
           <p>
             施策評価や日常運用のためのデータ基盤整備。
             分析ツールの数字をそのまま信用せず、ノイズ（クローラー、社内アクセス）の除去やイベント発火タイミングの正常化を先行して実施した。
@@ -354,8 +380,10 @@
           <li><strong>フロントエンド:</strong> TypeScript, Svelte, HTML/CSS, npm, pnpm</li>
           <li><strong>バックエンド:</strong> C# (.NET 9, ASP.NET Core), Entity Framework Core</li>
           <li><strong>設計手法:</strong> ドメイン駆動設計 (DDD), レイヤードアーキテクチャ, RESTful API</li>
-          <li><strong>インフラ・クラウド:</strong> AWS (ECS Fargate, Aurora MySQL, Lambda), Terraform, Docker</li>
-          <li><strong>計測・運用監視:</strong> Datadog (APM, Logs, Metrics), Clarity, SQL</li>
+          <li><strong>テスト自動化:</strong> Vitest, Playwright, xUnit</li>
+          <li><strong>インフラ・CI/CD:</strong> GitHub Actions, AWS (ECS Fargate, Aurora MySQL, Lambda), Terraform, Docker</li>
+          <li><strong>運用監視・分析:</strong> Datadog (APM, Logs, Metrics), Clarity, Google Tag Manager (GTM), Meta Pixel, SQL</li>
+          <li><strong>チーム・プロセス:</strong> コードレビュー, インターンメンタリング, オンボーディング支援</li>
         </ul>
       </section>
     </main>
