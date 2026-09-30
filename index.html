@@ -1,47 +1,53 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engineering Portfolio | Tech Lead & Senior Software Engineer</title>
-  <meta name="description" content="Portfolio of a Tech Lead / Senior Software Engineer specializing in backend architecture, system modernization, and product growth.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <title>Portfolio - taka-sigure</title>
+  <meta name="description" content="ソフトウェアエンジニア taka-sigure の技術実績・ポートフォリオ">
   <style>
     :root {
-      --bg: #090d16;
-      --bg-surface: #0e1526;
-      --bg-card: rgba(18, 26, 47, 0.7);
-      --bg-card-hover: rgba(28, 40, 70, 0.85);
-      --border: rgba(148, 163, 184, 0.12);
-      --border-accent: rgba(56, 189, 248, 0.35);
+      --bg: #ffffff;
+      --bg-subtle: #f8fafc;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --bg-subtle: #1e293b;
+        --text: #f8fafc;
+        --text-muted: #94a3b8;
+        --text-dim: #64748b;
+        --border: #334155;
+        --accent: #38bdf8;
+      }
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --bg-subtle: #1e293b;
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
+      --border: #334155;
       --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.12);
-      --accent-green: #34d399;
-      --accent-green-glow: rgba(52, 211, 153, 0.12);
-      --accent-purple: #c084fc;
-      --accent-amber: #fbbf24;
-      --max-w: 1040px;
     }
 
     [data-theme="light"] {
-      --bg: #f8fafc;
-      --bg-surface: #f1f5f9;
-      --bg-card: rgba(255, 255, 255, 0.95);
-      --bg-card-hover: #ffffff;
-      --border: rgba(100, 116, 139, 0.18);
-      --border-accent: rgba(2, 132, 199, 0.35);
+      --bg: #ffffff;
+      --bg-subtle: #f8fafc;
       --text: #0f172a;
       --text-muted: #475569;
-      --text-dim: #64748b;
-      --accent: #0284c7;
-      --accent-glow: rgba(2, 132, 199, 0.08);
-      --accent-green: #059669;
-      --accent-green-glow: rgba(5, 150, 105, 0.08);
-      --accent-purple: #9333ea;
-      --accent-amber: #d97706;
+      --text-dim: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #2563eb;
     }
 
     * {
@@ -53,926 +59,327 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
-      line-height: 1.65;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 15px;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Container */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* Navigation Header */
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background-color: rgba(9, 13, 22, 0.8);
-      border-bottom: 1px solid var(--border);
-      transition: background-color 0.25s ease;
-    }
-    [data-theme="light"] .site-nav {
-      background-color: rgba(248, 250, 252, 0.85);
-    }
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 64px;
-    }
-    .brand-group {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--text);
-    }
-    .brand-avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-purple));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: white;
-      font-size: 1rem;
-    }
-    .brand-title {
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: -0.01em;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .nav-link {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.15s ease;
-    }
-    .nav-link:hover {
-      color: var(--accent);
-    }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .btn-icon {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.4rem 0.75rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all 0.15s ease;
-    }
-    .btn-icon:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-accent);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 4.5rem 0 3.5rem;
-    }
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.85rem;
-      background: var(--accent-glow);
-      border: 1px solid var(--border-accent);
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background-color: var(--accent-green);
-      box-shadow: 0 0 10px var(--accent-green);
-    }
-    .hero-h1 {
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-      background: linear-gradient(135deg, var(--text) 40%, var(--text-muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-sub {
-      font-size: 1.125rem;
-      color: var(--text-muted);
+    .wrapper {
       max-width: 760px;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #0b1120;
-      padding: 0.65rem 1.4rem;
-      border-radius: 9px;
-      font-weight: 700;
-      font-size: 0.92rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: opacity 0.15s ease, transform 0.15s ease;
-    }
-    .btn-primary:hover {
-      opacity: 0.92;
-      transform: translateY(-1px);
-    }
-    .btn-secondary {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.65rem 1.4rem;
-      border-radius: 9px;
-      font-weight: 600;
-      font-size: 0.92rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all 0.15s ease;
-    }
-    .btn-secondary:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-accent);
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
     }
 
-    /* Metrics Grid */
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 1.1rem;
-      margin-bottom: 5rem;
+    /* Header */
+    header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
     }
-    .metric-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.4rem;
-      position: relative;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-    .metric-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--border-accent);
-    }
-    .metric-top {
+    .header-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.6rem;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
     }
-    .metric-title {
-      font-size: 0.75rem;
+    h1 {
+      font-size: 1.5rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-dim);
-    }
-    .badge-pill {
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-    }
-    .pill-green {
-      background: var(--accent-green-glow);
-      color: var(--accent-green);
-      border: 1px solid rgba(52, 211, 153, 0.3);
-    }
-    .pill-cyan {
-      background: var(--accent-glow);
-      color: var(--accent);
-      border: 1px solid var(--border-accent);
-    }
-    .metric-value {
-      font-size: 1.85rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.3rem;
-    }
-    .metric-detail {
-      font-size: 0.825rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Section Headers */
-    .section-wrap {
-      margin-bottom: 5rem;
-      scroll-margin-top: 5rem;
-    }
-    .section-header {
-      margin-bottom: 2rem;
-    }
-    .section-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 800;
       letter-spacing: -0.02em;
     }
-    .section-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-top: 0.4rem;
-    }
-
-    /* Case Study Card */
-    .case-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      transition: border-color 0.2s ease;
-    }
-    .case-card:hover {
-      border-color: rgba(148, 163, 184, 0.25);
-    }
-    .case-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .case-num {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .tag-group {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-    .tag {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      padding: 0.2rem 0.55rem;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .case-h3 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
-    .case-lead {
-      font-size: 0.975rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      line-height: 1.7;
-    }
-
-    /* Funnel Visualizer */
-    .funnel-visualizer {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .funnel-step {
-      margin-bottom: 0.9rem;
-    }
-    .funnel-step:last-child {
-      margin-bottom: 0;
-    }
-    .funnel-step-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      margin-bottom: 0.35rem;
-    }
-    .funnel-label {
-      font-weight: 600;
-      color: var(--text);
-    }
-    .funnel-rate {
-      font-family: ui-monospace, monospace;
-      font-weight: 700;
-    }
-    .funnel-bar-bg {
-      width: 100%;
-      height: 8px;
-      background: rgba(148, 163, 184, 0.1);
-      border-radius: 9999px;
-      overflow: hidden;
-    }
-    .funnel-bar-fill {
-      height: 100%;
-      border-radius: 9999px;
-      transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Case Study Grid */
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.25rem;
-    }
-    .case-col {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
-    }
-    .case-col-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .case-col ul {
-      padding-left: 1.15rem;
-      font-size: 0.885rem;
-      color: var(--text-muted);
-    }
-    .case-col li {
-      margin-bottom: 0.5rem;
-      line-height: 1.6;
-    }
-    .case-col li:last-child {
-      margin-bottom: 0;
-    }
-    .case-col strong {
-      color: var(--text);
-    }
-
-    /* Principles Grid */
-    .principles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem;
-    }
-    .principle-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.5rem;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-    .principle-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--border-accent);
-    }
-    .principle-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .principle-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .principle-desc {
+    .links {
       font-size: 0.875rem;
       color: var(--text-muted);
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .theme-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      margin-left: 0.75rem;
+    }
+
+    .bio {
+      color: var(--text-muted);
+      font-size: 0.95rem;
       line-height: 1.6;
     }
 
-    /* Skills Container */
-    .skills-container {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-    }
-    .skill-category {
-      margin-bottom: 1.75rem;
-    }
-    .skill-category:last-child {
-      margin-bottom: 0;
-    }
-    .skill-cat-title {
-      font-size: 0.95rem;
+    /* Headings */
+    h2 {
+      font-size: 1.25rem;
       font-weight: 700;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.01em;
     }
-    .skill-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .skill-badge {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 500;
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 1.75rem 0 0.5rem;
       color: var(--text);
+    }
+
+    h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0.85rem 0 0.25rem;
+      color: var(--text-muted);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    ul {
+      margin: 0 0 1.25rem 1.25rem;
+      color: var(--text);
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    /* Metrics Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 0.65rem 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      font-weight: 600;
+      color: var(--text-muted);
+      background-color: var(--bg-subtle);
+    }
+    td.num {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      white-space: nowrap;
     }
 
     /* Footer */
-    .site-footer {
-      border-top: 1px solid var(--border);
-      padding: 3rem 0;
+    footer {
       margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
       color: var(--text-dim);
-      font-size: 0.85rem;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.15s ease;
-    }
-    .footer-links a:hover {
-      color: var(--accent);
     }
 
-    /* Print Styles */
     @media print {
-      .site-nav, .hero-buttons, .btn-icon, .site-footer {
-        display: none !important;
-      }
       body {
-        background: white !important;
-        color: black !important;
+        font-size: 12pt;
+        background: #fff;
+        color: #000;
       }
-      .case-card, .metric-card, .case-col, .principles-grid, .skills-container {
-        border: 1px solid #ddd !important;
-        background: white !important;
-        page-break-inside: avoid;
-        box-shadow: none !important;
-      }
-      .hero-h1 {
-        -webkit-text-fill-color: black !important;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero {
-        padding: 3rem 0 2rem;
-      }
-      .nav-links {
+      .theme-btn {
         display: none;
       }
-      .case-card {
-        padding: 1.25rem;
+      .wrapper {
+        max-width: 100%;
+        padding: 0;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Site Nav -->
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="#" class="brand-group">
-        <div class="brand-avatar">⚡</div>
-        <div>
-          <div class="brand-title">taka-sigure</div>
+  <div class="wrapper">
+    <header>
+      <div class="header-top">
+        <h1>taka-sigure</h1>
+        <div class="links">
+          <a href="https://github.com/taka-sigure/portfolio" target="_blank">GitHub</a>
+          <button id="themeToggle" class="theme-btn">Theme</button>
         </div>
-      </a>
-
-      <div class="nav-links">
-        <a href="#metrics" class="nav-link">Highlights</a>
-        <a href="#cases" class="nav-link">Case Studies</a>
-        <a href="#principles" class="nav-link">Principles</a>
-        <a href="#skills" class="nav-link">Tech Stack</a>
       </div>
-
-      <div class="nav-actions">
-        <button id="themeToggle" class="btn-icon" title="Toggle Theme">
-          <span id="themeIcon">☀️</span>
-        </button>
-        <button onclick="window.print()" class="btn-icon" title="Print to PDF">
-          🖨️ PDF
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <main class="container">
-    <!-- Hero Section -->
-    <header class="hero">
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        Tech Lead / Senior Software Engineer Portfolio
-      </div>
-      <h1 class="hero-h1">
-        Engineering for Business Impact.<br>Architecture for Longevity.
-      </h1>
-      <p class="hero-sub">
-        要件定義から課題発見、アーキテクチャ設計、実装、運用、そして事業KPI改善までを一気通貫で推進するテックリード。<br>
-        データ分析に基づくコンバージョン最適化から、.NET 9 + DDDによる無停止モダナイゼーション、イベント駆動アーキテクチャへの刷新まで、技術と事業の両輪で持続可能な価値を創出します。
+      <p class="bio">
+        ソフトウェアエンジニア。<br>
+        Webアプリケーションの設計・実装、リレーショナルデータベース運用、システムのモダナイゼーション、ファネル分析に基づくコンバージョン率改善などを担当。
       </p>
-      <div class="hero-buttons">
-        <a href="#cases" class="btn-primary">プロジェクト事例を見る ↓</a>
-        <a href="https://github.com/taka-sigure/portfolio" target="_blank" class="btn-secondary">
-          <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align: text-bottom; margin-right: 4px;"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
-          GitHub Repository
-        </a>
-      </div>
     </header>
 
-    <!-- Key Metrics Highlight -->
-    <section id="metrics" class="section-wrap">
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="metric-top">
-            <span class="metric-title">Funnel CVR</span>
-            <span class="badge-pill pill-green">+233% (3.3x)</span>
-          </div>
-          <div class="metric-value" style="color: var(--accent-green);">1.5% → 5.0%</div>
-          <div class="metric-detail">行動ログ分析によるファネル刷新と「削る改善」の徹底</div>
-        </div>
+    <main>
+      <section>
+        <h2>主な実績サマリー</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>実績値</th>
+              <th>内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>フォームCVR</td>
+              <td class="num">1.5% → 5.0%</td>
+              <td>ファネル分析・定性ログに基づくステップ化と入力負荷の削減</td>
+            </tr>
+            <tr>
+              <td>成約数 YoY</td>
+              <td class="num">-13% → +30%</td>
+              <td>流入減少局面における転換率改善による前年比反転</td>
+            </tr>
+            <tr>
+              <td>売上影響</td>
+              <td class="num">年間億規模防衛</td>
+              <td>流入減に伴う売上機会損失の回避（反実仮想比較）</td>
+            </tr>
+            <tr>
+              <td>API移行</td>
+              <td class="num">ダウンタイム 0</td>
+              <td>.NET 6から9+DDDへの無停止移行、DB共有下での互換性担保</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-        <div class="metric-card">
-          <div class="metric-top">
-            <span class="metric-title">YoY Growth</span>
-            <span class="badge-pill pill-cyan">43pt 反転</span>
-          </div>
-          <div class="metric-value" style="color: var(--accent);">-13% → +30%</div>
-          <div class="metric-detail">オーガニック流入減少局面において成約件数を反転成長</div>
-        </div>
+      <section>
+        <h2>プロジェクト実績</h2>
 
-        <div class="metric-card">
-          <div class="metric-top">
-            <span class="metric-title">Revenue Defended</span>
-            <span class="badge-pill pill-green">防衛インパクト</span>
-          </div>
-          <div class="metric-value" style="color: var(--accent-green);">年間 億規模</div>
-          <div class="metric-detail">外部流入減による売上消失危機をコンバージョン率改善で防衛</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-top">
-            <span class="metric-title">Core System Migration</span>
-            <span class="badge-pill pill-cyan">Zero Downtime</span>
-          </div>
-          <div class="metric-value">.NET 6 → 9</div>
-          <div class="metric-detail">DB共有並行稼働とBlue-Green切り替えによる無停止世代交代</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Case Studies Section -->
-    <section id="cases" class="section-wrap">
-      <div class="section-header">
-        <span class="section-tag">Case Studies</span>
-        <h2 class="section-title">主要プロジェクト実績</h2>
-        <p class="section-desc">技術的難所とビジネス要件の狭間で下した設計判断と定量的成果</p>
-      </div>
-
-      <!-- Case 1 -->
-      <article class="case-card">
-        <div class="case-meta">
-          <span class="case-num">Case Study 01 // Product Growth</span>
-          <div class="tag-group">
-            <span class="tag">Funnel Optimization</span>
-            <span class="tag">Behavioral Analytics</span>
-            <span class="tag">AB Testing</span>
-            <span class="tag">Data Platform</span>
-          </div>
-        </div>
-        <h3 class="case-h3">外部流入減少を跳ね返すファネル最適化 (CVR 1.5% → 5.0%)</h3>
-        <p class="case-lead">
-          SEO低下によるオーガニック流入減少に伴い、主要KPIが前年比マイナスへ沈む局面において、自分がコントロールできるコンバージョン側に集中。計測基盤の適正化から行動ログ分析、2段階のフォーム刷新を実施し、前年比+30%への反転成長を達成しました。
-        </p>
-
-        <!-- Funnel Bar Visualizer -->
-        <div class="funnel-visualizer">
-          <div class="funnel-step">
-            <div class="funnel-step-header">
-              <span class="funnel-label">初期状態: 縦型埋め込みフォーム (ノイズ混入・未到達)</span>
-              <span class="funnel-rate" style="color: var(--text-dim);">1.5%</span>
-            </div>
-            <div class="funnel-bar-bg">
-              <div class="funnel-bar-fill" style="width: 30%; background: var(--text-dim);"></div>
-            </div>
-          </div>
-          <div class="funnel-step">
-            <div class="funnel-step-header">
-              <span class="funnel-label">施策1: 計測基盤修正 + 横型ステップフォーム化</span>
-              <span class="funnel-rate" style="color: var(--accent);">2.5% (+67%)</span>
-            </div>
-            <div class="funnel-bar-bg">
-              <div class="funnel-bar-fill" style="width: 50%; background: var(--accent);"></div>
-            </div>
-          </div>
-          <div class="funnel-step">
-            <div class="funnel-step-header">
-              <span class="funnel-label">施策2: 選択プロセスの自動化 (心理的負荷の削減)</span>
-              <span class="funnel-rate" style="color: var(--accent-green);">5.0% (+233%)</span>
-            </div>
-            <div class="funnel-bar-bg">
-              <div class="funnel-bar-fill" style="width: 100%; background: var(--accent-green);"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-grid">
-          <div class="case-col">
-            <div class="case-col-title" style="color: var(--accent);">🔍 課題特定と計測の適正化</div>
-            <ul>
-              <li><strong>計測先行の徹底:</strong> 既存ログにボット等のノイズが混入していたため、施策より先に除外フィルタを実装し、正しい数字が測れる環境を担保。</li>
-              <li><strong>定性データの活用:</strong> ヒートマップ（Clarity）により、従来のフォームがスクロールされず見られていないことを特定。先進UXを参考に1問1答形式へ刷新。</li>
-            </ul>
-          </div>
-
-          <div class="case-col">
-            <div class="case-col-title" style="color: var(--accent-amber);">💡 失敗から得た「削る改善」への転換</div>
-            <ul>
-              <li><strong>仮説の誤謬:</strong> 最終入力ステップの25%離脱に対し「信頼不足」と仮説を立て、認証マーク等のトラストシグナルを追加するも有意差なし。</li>
-              <li><strong>思考の転換:</strong> 離脱の主因は信頼ではなく「情報入力自体の心理的負荷」と看破。「信頼を足すより、要求を削る」方針へ転換し、選択ステップの自動化を断行。</li>
-            </ul>
-          </div>
-
-          <div class="case-col">
-            <div class="case-col-title" style="color: var(--accent-green);">📈 定量成果 & 検証の誠実さ</div>
-            <ul>
-              <li><strong>KPI反転:</strong> 請求成約件数を前年同期比 <strong>-13% から +30%</strong> (43pt反転) に改善。年間億規模の売上消失を防衛。</li>
-              <li><strong>交絡因子の排除:</strong> キーワードを固定した媒体側スプリットABテストで季節要因を排除し、リリース混在月を自ら除外して客観的に効果測定。</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- Case 2 -->
-      <article class="case-card">
-        <div class="case-meta">
-          <span class="case-num">Case Study 02 // Modernization</span>
-          <div class="tag-group">
-            <span class="tag">C# / .NET 9</span>
-            <span class="tag">Domain-Driven Design (DDD)</span>
-            <span class="tag">AWS Aurora</span>
-            <span class="tag">Zero Downtime</span>
-          </div>
-        </div>
-        <h3 class="case-h3">レガシーAPIの.NET 9 + DDD化と無停止Blue-Green移行</h3>
-        <p class="case-lead">
-          長年の機能追加で責務が混在していたAPIを、.NET 6の公式サポート終了(EOL)という事業リスクを梃子にしてDDD構成でフルリファクタリング。同一データベースを共有する並行稼働期間を設け、ダウンタイムゼロでの切り替えを完遂しました。
-        </p>
-
-        <div class="case-grid">
-          <div class="case-col">
-            <div class="case-col-title" style="color: var(--accent);">🏛️ 組織を動かす技術判断</div>
-            <ul>
-              <li><strong>工数の獲得ロジック:</strong> リファクタリング単体では事業価値が説明しづらいため、サポート終了期限という明確なビジネスリスクに設計改善を紐づけて合意形成。</li>
-              <li><strong>バージョン選定:</strong> 最終目標（LTS）への差分を最小化するため、依存ライブラリの対応状況を踏まえ中継地点として最新バージョンを採用。</li>
-            </ul>
-          </div>
-
-          <div class="case-col">
-            <div class="case-col-title" style="color: var(--accent-purple);">🛡️ デプロイ戦略によるリスク吸収</div>
-            <ul>
-              <li><strong>Blue-Green並行構築:</strong> インプレース更新のリスクをコードで背負わず、新規サービスとして並行稼働させフロントエンドの向き先切り替えで即時ロールバック可能に。</li>
-              <li><strong>DB共有時の競合防止:</strong> マイグレーション実行権を新サービス側に一本化。スキーマ変更は加算的な変更（新規テーブル、NULL許容カラム）に限定し破壊的変更を凍結。</li>
-            </ul>
-          </div>
-
-          <div class="case-col">
-            <div class="case-col-title" style="color: var(--accent-green);">✨ 成果と将来への接続</div>
-            <ul>
-              <li><strong>無停止移行:</strong> 本番ダウンタイムゼロ・無障害で世代交代を完了。</li>
-              <li><strong>アーキテクチャの進化:</strong> ビジネスロジックをドメイン層に閉じ込めたことで単体テスト容易性が劇的に向上。後続のBFF導入の強固な基盤となった。</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- Case 3 -->
-      <article class="case-card">
-        <div class="case-meta">
-          <span class="case-num">Case Study 03 // Architecture</span>
-          <div class="tag-group">
-            <span class="tag">AWS EventBridge</span>
-            <span class="tag">Amazon ECS</span>
-            <span class="tag">Terraform</span>
-            <span class="tag">Datadog</span>
-          </div>
-        </div>
-        <h3 class="case-h3">定期ポーリングバッチからEventBridgeによるイベント駆動への移行</h3>
-        <p class="case-lead">
-          10分間隔の定期ポーリングでECSタスクを起動していた構成を、EventBridgeトリガーによるイベント駆動型アーキテクチャへ刷新。処理遅延をゼロにし、アイドル起動コストを削減しました。
-        </p>
-
-        <div class="case-grid">
-          <div class="case-col">
-            <div class="case-col-title" style="color: var(--accent);">⏱️ 課題の特定</div>
-            <ul>
-              <li>イベント発生から最大10分の処理遅延が存在し、リアルタイム性が損なわれていた。</li>
-              <li>送信対象が存在しない時間帯でも無駄にECSタスクが起動し、リソースとコストが非効率。</li>
-            </ul>
-          </div>
-
-          <div class="case-col">
-            <div class="case-col-title" style="color: var(--accent-cyan);">⚙️ 設計判断と移行</div>
-            <ul>
-              <li><strong>既存資産の活用:</strong> Lambdaへ全面書き換えるのではなく既存.NETコンテナを活用できるECS実行方式を採用し、書き換え工数を最小化。</li>
-              <li><strong>インフラのコード化:</strong> Terraformにより変更をコードレビュー可能にし、本番・検証環境の再現性を担保。Datadog監視をそのまま流用。</li>
-            </ul>
-          </div>
-
-          <div class="case-col">
-            <div class="case-col-title" style="color: var(--accent-green);">🎯 堅牢性の確保</div>
-            <ul>
-              <li>DBステータス管理とトランザクションによる多重送信（二重処理）の完全防止。</li>
-              <li>EventBridgeのリトライポリシーと監視アラートによる耐障害性の確立。</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- Engineering Principles -->
-    <section id="principles" class="section-wrap">
-      <div class="section-header">
-        <span class="section-tag">Philosophy</span>
-        <h2 class="section-title">エンジニアリング行動指針</h2>
-        <p class="section-desc">技術選定やチーム主導において一貫して重視している価値観</p>
-      </div>
-
-      <div class="principles-grid">
-        <div class="principle-card">
-          <div class="principle-icon">📊</div>
-          <h4 class="principle-title">1. 計測を先に行う</h4>
-          <p class="principle-desc">
-            施策に着手する前にノイズを除去し、正しく測れる基盤を整える。不確実な数値の上でいくら高度な改善を行っても正しい判断はできません。
+        <article>
+          <h3>1. ファネル分析とUX改善によるコンバージョン率向上 (CVR 1.5% → 5.0%)</h3>
+          <p>
+            マッチングプラットフォームにおいて、外部要因（SEO順位低下など）によりオーガニック流入が約1/3へ減少した局面での取り組み。
+            流入獲得側は別部門・外部要因の比重が大きかったため、コントロール可能なフォーム側のコンバージョン最適化に注力した。
           </p>
-        </div>
 
-        <div class="principle-card">
-          <div class="principle-icon">✂️</div>
-          <h4 class="principle-title">2. 「削る」改善を尊ぶ</h4>
-          <p class="principle-desc">
-            課題に対して機能やUIを足すのではなく、不要なステップや要求を削ることで摩擦を減らす。システムもユーザー体験もシンプルさが最大の武器になります。
+          <h4>計測基盤の修正</h4>
+          <p>
+            当初のログにはクローラーやボットのアクセスが混入しており、CVRの分母・分子が歪んでいた。
+            改善施策に先立ち、ボット除外ロジックを整備して正しい数値を計測できる土台を作った。
           </p>
-        </div>
 
-        <div class="principle-card">
-          <div class="principle-icon">🛡️</div>
-          <h4 class="principle-title">3. デプロイでリスクを殺す</h4>
-          <p class="principle-desc">
-            複雑な変更のリスクをコードの慎重さだけで担保せず、並行稼働・向き先切り替え・即時ロールバックといったデプロイ戦略で構造的に安全性を確保します。
+          <h4>施策の変遷と学び</h4>
+          <ul>
+            <li>
+              <strong>施策1: 横型ステップフォーム化 (1.5% → 2.5%)</strong><br>
+              ヒートマップツール（Clarity）の定性ログから、既存の縦型埋め込みフォームがファーストビュー外でスクロールされず見られていないことを確認。
+              海外の同業サービスを参考に、1問1答形式の横型ステップフォームを設計・実装して初期改善を得た。
+            </li>
+            <li>
+              <strong>失敗と方針転換</strong><br>
+              フォーム終盤の個人情報入力ステップで約25%が離脱していたため、「サイトへの信頼不足」と仮説を立て、認証マークやメディア掲載実績を追加した。
+              しかし数値に有意な改善は見られなかった。<br>
+              この結果から、離脱の主因は信頼性ではなく「個人情報を入力して渡すこと自体の心理的コスト」にあると判断。「信頼を足す」アプローチから<strong>「ユーザーへの要求を減らす（削る改善）」</strong>へと方針を転換した。
+            </li>
+            <li>
+              <strong>施策2: 選択プロセスの自動化 (2.5% → 5.0%)</strong><br>
+              ファネル分析の結果、詳細なマッチング相手の選択ステップの通過率が20%程度と極端に低かった。
+              「ユーザーは自ら細かく選びたいのではなく、適切な候補を提示してほしい」と仮説を立て、あらかじめ推奨候補を選択状態にして確認（Yes/No）のみに簡略化。
+              ステップ通過率が20%から35%に改善し、最終CVRは5.0%に達した。
+            </li>
+          </ul>
+
+          <h4>結果と検証設計</h4>
+          <p>
+            フォーム開始から送信完了までの全体CVRは1.5%から5.0%へ改善（約3.3倍）。
+            主要成約件数は、施策前の前年同期比 -13% から、施策後は +30% へ反転した。
+            効果検証においては、広告キーワードを固定したスプリットテストにより季節性や流入質の変動を排除し、リリース日が月半ばであったため過渡期の月を除外して評価を行った。
           </p>
-        </div>
+        </article>
 
-        <div class="principle-card">
-          <div class="principle-icon">🤝</div>
-          <h4 class="principle-title">4. 技術を事業言語に翻訳する</h4>
-          <p class="principle-desc">
-            リファクタリングやアーキテクチャ刷新の必要性を技術的正しさだけで主張せず、事業リスクや開発速度の向上に翻訳して合意を形成します。
+        <article>
+          <h3>2. レガシーAPIの.NET 9移行とDDDリファクタリング (無停止切り替え)</h3>
+          <p>
+            長年の運用でビジネスロジック・アプリケーション処理・インフラ処理の責務が混在し、影響範囲の把握やテストが困難になっていた.NET 6製APIの刷新。
           </p>
-        </div>
-      </div>
-    </section>
 
-    <!-- Tech Stack Matrix -->
-    <section id="skills" class="section-wrap">
-      <div class="section-header">
-        <span class="section-tag">Technical Competencies</span>
-        <h2 class="section-title">技術スタック & 専門領域</h2>
-        <p class="section-desc">実務において設計・実装・運用を主導しているコア技術</p>
-      </div>
+          <h4>背景と合意形成</h4>
+          <p>
+            コードの設計改善（DDD化）単体では事業的な優先順位が上がりづらかったため、フレームワーク（.NET 6）の公式サポート終了(EOL)というビジネスリスクと紐づけて提案し、リファクタリング工数を確保した。
+            最終的なLTS（.NET 10）への差分を小さく抑える中継地点として、当時最新の.NET 9を採用した。
+          </p>
 
-      <div class="skills-container">
-        <div class="skill-category">
-          <div class="skill-cat-title">
-            <span>💻 Backend & Architecture</span>
-          </div>
-          <div class="skill-badges">
-            <span class="skill-badge">C# (.NET 9 / ASP.NET Core)</span>
-            <span class="skill-badge">Domain-Driven Design (DDD)</span>
-            <span class="skill-badge">Entity Framework Core</span>
-            <span class="skill-badge">RESTful API / BFF</span>
-            <span class="skill-badge">Event-Driven Architecture</span>
-            <span class="skill-badge">Clean Architecture</span>
-          </div>
-        </div>
+          <h4>移行設計とリスク管理</h4>
+          <ul>
+            <li>
+              <strong>Blue-Green型の並行構築:</strong><br>
+              インプレースでの更新は避け、.NET 9 + DDD構成の新規サービスを別系統として並行構築。
+              フロントエンド側のルーティング切り替えで移行することで、問題発生時の即時ロールバック性を確保した。
+            </li>
+            <li>
+              <strong>データベース共有時の互換性担保:</strong><br>
+              新旧サービスが同一のデータベース（Aurora MySQL）を参照する並行稼働期間中、マイグレーションの実行権限を新規サービス側に一本化。
+              スキーマ変更は加算的な変更（新規テーブル作成、NULL許容またはデフォルト値を持つカラムの追加）に限定し、破壊的な変更（カラム削除・型変更）は旧系統の完全廃止まで持ち込まない運用ルールを敷いた。
+            </li>
+          </ul>
 
-        <div class="skill-category">
-          <div class="skill-cat-title">
-            <span>☁️ Cloud & Infrastructure</span>
-          </div>
-          <div class="skill-badges">
-            <span class="skill-badge">AWS (ECS Fargate)</span>
-            <span class="skill-badge">Amazon EventBridge</span>
-            <span class="skill-badge">Amazon Aurora MySQL</span>
-            <span class="skill-badge">AWS Lambda</span>
-            <span class="skill-badge">Terraform (IaC)</span>
-            <span class="skill-badge">Docker</span>
-          </div>
-        </div>
+          <h4>結果</h4>
+          <p>
+            本番障害やダウンタイムを発生させることなく、新環境への完全移行を完了。
+            ドメインロジックが独立したことで単体テストの作成が容易になり、変更容易性が向上した。
+          </p>
+        </article>
 
-        <div class="skill-category">
-          <div class="skill-cat-title">
-            <span>📈 Data, Observability & Growth</span>
-          </div>
-          <div class="skill-badges">
-            <span class="skill-badge">Datadog (APM, Logs, Metrics)</span>
-            <span class="skill-badge">Clarity (User Behavior Analytics)</span>
-            <span class="skill-badge">Funnel Analysis & AB Testing</span>
-            <span class="skill-badge">SQL & Data Modeling</span>
-            <span class="skill-badge">BI Dashboarding</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <article>
+          <h3>3. 計測基盤の整備とデータ活用</h3>
+          <p>
+            施策評価や日常運用のためのデータ基盤整備。
+            分析ツールの数字をそのまま信用せず、ノイズ（クローラー、社内アクセス）の除去やイベント発火タイミングの正常化を先行して実施した。
+            また、SQLによるダッシュボード整備を通じて、開発者以外のメンバーも直接KPIの進捗やファネルの離脱ポイントを確認できる環境を整えた。
+          </p>
+        </article>
+      </section>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div>
-        © 2026 taka-sigure. Designed & Built with Clean Web Standards.
-      </div>
-      <div class="footer-links">
-        <a href="https://github.com/taka-sigure/portfolio" target="_blank">GitHub Repository</a>
-      </div>
+      <section>
+        <h2>技術スタック</h2>
+        <ul>
+          <li><strong>言語・フレームワーク:</strong> C# (.NET 9, ASP.NET Core), Entity Framework Core</li>
+          <li><strong>設計手法:</strong> ドメイン駆動設計 (DDD), レイヤードアーキテクチャ, RESTful API</li>
+          <li><strong>インフラ・クラウド:</strong> AWS (ECS Fargate, Aurora MySQL, Lambda), Terraform, Docker</li>
+          <li><strong>計測・運用監視:</strong> Datadog (APM, Logs, Metrics), Clarity, SQL</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div>taka-sigure / Portfolio</div>
+      <div>Last updated: 2026</div>
     </footer>
-  </main>
+  </div>
 
   <script>
-    // Theme Management
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    function initTheme() {
-      const saved = localStorage.getItem('portfolio_theme');
-      if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
-        themeIcon.textContent = saved === 'light' ? '🌙' : '☀️';
-      } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-        themeIcon.textContent = prefersDark ? '☀️' : '🌙';
-      }
+    const btn = document.getElementById('themeToggle');
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme_pref', theme);
     }
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('portfolio_theme', next);
-        themeIcon.textContent = next === 'light' ? '🌙' : '☀️';
-      });
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    const saved = localStorage.getItem('theme_pref');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
     }
-    initTheme();
   </script>
 </body>
 </html>
