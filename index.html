@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - taka-sigure</title>
-  <meta name="description" content="ソフトウェアエンジニア taka-sigure の技術実績・ポートフォリオ">
+  <meta name="description" content="データに基づくUX改善と、安全なシステム刷新を得意とするソフトウェアエンジニア taka-sigure の実績。フォームCVR改善、API無停止移行、テスト自動化の取り組みを紹介。">
   <style>
     :root {
       --bg: #ffffff;
@@ -116,6 +116,163 @@
       line-height: 1.6;
     }
 
+    .lead {
+      margin: 1.5rem 0 1rem;
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+    .primary-stack {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .section-nav, .resource-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1.25rem;
+    }
+    .section-nav {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+    }
+    .section-nav a, .resource-links a {
+      color: var(--accent);
+      text-underline-offset: 0.25em;
+    }
+    a:focus-visible, button:focus-visible, .table-scroll:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+    [id] {
+      scroll-margin-top: 1.5rem;
+    }
+    .table-scroll {
+      overflow-x: auto;
+    }
+    .table-hint {
+      display: none;
+    }
+    .metric-note {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    article + article {
+      margin-top: 2.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .contact-link {
+      display: inline-block;
+      margin-top: 1.25rem;
+      padding: 0.65rem 1rem;
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .contact-link:hover { opacity: 0.85; }
+    .email-link { color: var(--accent); overflow-wrap: anywhere; text-underline-offset: 0.25em; }
+    .case-meta {
+      margin-bottom: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .case-summary {
+      margin: 1rem 0 1.5rem;
+      padding: 1rem 1.15rem;
+      background: var(--bg-subtle);
+      border-radius: 6px;
+    }
+    .case-summary > div {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 0.75rem;
+    }
+    .case-summary > div + div {
+      margin-top: 0.6rem;
+    }
+    .case-summary dt {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .case-summary dd {
+      font-size: 0.9rem;
+    }
+    .process-figure {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .process-figure figcaption {
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .process-figure figcaption span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .process-steps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .process-steps li {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+    }
+    .process-steps li:last-child {
+      border-color: var(--accent);
+    }
+    .process-steps strong {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+    }
+    .process-steps span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .migration-services {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0.75rem;
+      align-items: center;
+      text-align: center;
+    }
+    .migration-services > div {
+      padding: 0.65rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .migration-services span, .migration-db span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+    .migration-db {
+      margin-top: 0.75rem;
+      padding: 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
     /* Headings */
     h2 {
       font-size: 1.25rem;
@@ -192,6 +349,21 @@
       justify-content: space-between;
     }
 
+    @media (max-width: 540px) {
+      .wrapper { padding: 1.5rem 1rem 3rem; }
+      .lead { font-size: 1.25rem; }
+      .header-top { align-items: center; gap: 0.75rem; }
+      .links { flex-shrink: 0; }
+      th, td { padding: 0.65rem 0.5rem; }
+      table { min-width: 600px; }
+      .table-hint { display: block; color: var(--text-muted); font-size: 0.75rem; }
+      .process-steps { grid-template-columns: 1fr; gap: 0.85rem; }
+      .process-steps li { display: grid; grid-template-columns: 4rem 1fr; gap: 0 0.5rem; align-items: center; }
+      .process-steps li span:last-child { grid-column: 2; }
+      .resource-links { flex-direction: column; }
+      footer { flex-wrap: wrap; gap: 0.5rem 1rem; }
+    }
+
     @media print {
       body {
         font-size: 12pt;
@@ -214,66 +386,91 @@
       <div class="header-top">
         <h1>taka-sigure</h1>
         <div class="links">
-          <a href="https://github.com/taka-sigure/portfolio" target="_blank">GitHub</a>
+          <a href="https://github.com/taka-sigure" target="_blank" rel="noopener noreferrer">GitHub</a>
           <button id="themeToggle" class="theme-btn">Theme</button>
         </div>
       </div>
-      <p class="bio">
-        ソフトウェアエンジニア。<br>
-        Webアプリケーション（バックエンド／フロントエンド）の設計・実装から、自動テストやCI/CDを通じた開発生産性の向上、データベース運用、レガシーシステムのモダナイゼーション、ファネル分析に基づくコンバージョン率改善などを担当。日常業務ではインターン生のメンターやコードレビューを通じた品質担保・オンボーディング支援も行っています。
-      </p>
+      <p class="lead">データに基づくUX改善と、<br>安全なシステム刷新が得意な<br>ソフトウェアエンジニア。</p>
+      <p class="bio">ユーザー行動の分析から施策の設計・実装・検証まで担当。バックエンド／フロントエンドの開発に加え、無停止でのAPI移行やテスト・CI/CDの整備、コードレビュー・メンタリングにも取り組んでいます。</p>
+      <p class="bio">フルスタックエンジニアとして、フロントエンド・バックエンドからBIツール・インフラまで担当。開発チームはインターン3人、社員3〜4人の構成です。</p>
+      <p class="primary-stack">TypeScript / Svelte · C# / ASP.NET Core · AWS</p>
+      <nav class="section-nav" aria-label="ページ内ナビゲーション">
+        <a href="#highlights">主な実績</a>
+        <a href="#projects">プロジェクト詳細</a>
+        <a href="#stack">技術スタック</a>
+        <a href="#contact">副業のご相談</a>
+      </nav>
+      <a class="contact-link" href="mailto:55shibasoccer@gmail.com?subject=%E5%89%AF%E6%A5%AD%E6%A1%88%E4%BB%B6%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">副業案件について相談する →</a>
     </header>
 
     <main>
       <section>
-        <h2>主な実績サマリー</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>項目</th>
-              <th>実績値</th>
-              <th>内容</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>フォームCVR</td>
-              <td class="num">1.5% → 5.0%</td>
-              <td>ファネル分析・定性ログに基づくステップ化と入力負荷の削減</td>
-            </tr>
-            <tr>
-              <td>成約数 YoY</td>
-              <td class="num">-13% → +30%</td>
-              <td>流入減少局面における転換率改善による前年比反転</td>
-            </tr>
-            <tr>
-              <td>売上影響</td>
-              <td class="num">年間億規模防衛</td>
-              <td>流入減に伴う売上機会損失の回避（反実仮想比較）</td>
-            </tr>
-            <tr>
-              <td>API移行</td>
-              <td class="num">ダウンタイム 0</td>
-              <td>.NET 6から9+DDDへの無停止移行、DB共有下での互換性担保</td>
-            </tr>
-            <tr>
-              <td>品質・生産性</td>
-              <td class="num">テスト自動化 & CI/CD</td>
-              <td>Vitest / Playwright導入、GitHub Actionsによる自動検証・デプロイ</td>
-            </tr>
-          </tbody>
-        </table>
+        <h2 id="highlights">主な実績サマリー</h2>
+        <div class="table-scroll" role="region" aria-labelledby="highlights" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">項目</th>
+                <th scope="col">実績値</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>フォームCVR<span class="metric-note">開始 → 送信完了</span></td>
+                <td class="num">1.5% → 5.0%</td>
+                <td>ファネル分析・定性ログに基づくステップ化と入力負荷の削減</td>
+              </tr>
+              <tr>
+                <td>成約数 YoY</td>
+                <td class="num">-13% → +30%</td>
+                <td>流入減少局面における転換率改善による前年比反転</td>
+              </tr>
+              <tr>
+                <td>売上防衛</td>
+                <td class="num">流入減の影響を緩和</td>
+                <td>月商約1,000万円規模のサービスで、CVR改善により売上機会損失を抑制</td>
+              </tr>
+              <tr>
+                <td>API移行</td>
+                <td class="num">段階移行中</td>
+                <td>.NET 6から9 + DDDへ、無停止切り替えを前提に並行構築・DB互換性を確保</td>
+              </tr>
+              <tr>
+                <td>品質・生産性</td>
+                <td class="num">テスト自動化 & CI/CD</td>
+                <td>Vitest / Playwright導入、GitHub Actionsによる自動検証・デプロイ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-hint">表は横にスクロールしてご覧いただけます。</p>
       </section>
 
       <section>
-        <h2>プロジェクト実績</h2>
+        <h2 id="projects">プロジェクト実績</h2>
 
         <article>
-          <h3>1. ファネル分析とUX改善によるコンバージョン率向上 (CVR 1.5% → 5.0%)</h3>
+          <h3>1. ファネル分析とUX改善</h3>
+          <p class="case-meta">2025年6〜8月：横型フォームへの改修 ／ 2025年12月〜2026年3月：追加改善</p>
+          <dl class="case-summary">
+            <div><dt>課題</dt><dd>オーガニック流入が約1/3に減少。フォームの転換率改善が必要だった。</dd></div>
+            <div><dt>担当</dt><dd>計測基盤の修正、ユーザー行動の分析、フロントエンド・バックエンドの設計・実装、効果検証。</dd></div>
+            <div><dt>成果</dt><dd>フォームCVR 1.5% → 5.0%（約3.3倍）。主要成約件数の前年同期比 -13% → +30%。</dd></div>
+          </dl>
           <p>
             マッチングプラットフォームにおいて、外部要因（SEO順位低下など）によりオーガニック流入が約1/3へ減少した局面での取り組み。
             流入獲得側は別部門・外部要因の比重が大きかったため、コントロール可能なフォーム側のコンバージョン最適化に注力した。
           </p>
+
+          <figure class="process-figure">
+            <figcaption>フォーム改善の流れ <span>開始 → 送信完了のCVR</span></figcaption>
+            <ol class="process-steps">
+              <li><span>改善前</span><strong>1.5%</strong><span>縦型フォーム</span></li>
+              <li><span>施策1</span><strong>2.5%</strong><span>1問1答のステップ化</span></li>
+              <li><span>施策2</span><strong>5.0%</strong><span>アドバイザー1人の確認に簡略化</span></li>
+            </ol>
+          </figure>
 
           <h4>計測基盤の修正</h4>
           <p>
@@ -295,9 +492,9 @@
               この結果から、離脱の主因は信頼性ではなく「個人情報を入力して渡すこと自体の心理的コスト」にあると判断。「信頼を足す」アプローチから<strong>「ユーザーへの要求を減らす（削る改善）」</strong>へと方針を転換した。
             </li>
             <li>
-              <strong>施策2: 選択プロセスの自動化 (2.5% → 5.0%)</strong><br>
+              <strong>施策2: アドバイザー1人の確認に簡略化 (2.5% → 5.0%)</strong><br>
               ファネル分析の結果、詳細なマッチング相手の選択ステップの通過率が20%程度と極端に低かった。
-              「ユーザーは自ら細かく選びたいのではなく、適切な候補を提示してほしい」と仮説を立て、あらかじめ推奨候補を選択状態にして確認（Yes/No）のみに簡略化。
+              「ユーザーは自ら細かく選びたいのではなく、適切な候補を提示してほしい」と仮説を立て、あらかじめ推奨アドバイザー1人を選択状態にして確認（Yes/No）のみに簡略化。
               ステップ通過率が20%から35%に改善し、最終CVRは5.0%に達した。
             </li>
           </ul>
@@ -306,12 +503,19 @@
           <p>
             フォーム開始から送信完了までの全体CVRは1.5%から5.0%へ改善（約3.3倍）。
             主要成約件数は、施策前の前年同期比 -13% から、施策後は +30% へ反転した。
+            月商約1,000万円規模の対象サービスにおいて、流入減少下での売上防衛・機会損失の抑制に寄与した。
             効果検証においては、広告キーワードを固定したスプリットテストにより季節性や流入質の変動を排除し、リリース日が月半ばであったため過渡期の月を除外して評価を行った。
           </p>
         </article>
 
         <article>
-          <h3>2. レガシーAPIの.NET 9移行とDDDリファクタリング (無停止切り替え)</h3>
+          <h3>2. レガシーAPIの段階移行と設計改善</h3>
+          <p class="case-meta">2026年3月〜現在 · 移行中</p>
+          <dl class="case-summary">
+            <div><dt>課題</dt><dd>.NET 6のサポート終了への対応と、責務が混在したAPIの保守性改善。</dd></div>
+            <div><dt>担当</dt><dd>移行の提案、バックエンド・フロントエンド・インフラの設計・実装、新旧APIのDB互換性の確保。</dd></div>
+            <div><dt>進捗</dt><dd>新旧APIの並行稼働とルーティング切り替えによる段階移行を継続。ドメインロジックを独立させ、テストを作成しやすい構造へ。</dd></div>
+          </dl>
           <p>
             長年の運用でビジネスロジック・アプリケーション処理・インフラ処理の責務が混在し、影響範囲の把握やテストが困難になっていた.NET 6製APIの刷新。
           </p>
@@ -321,6 +525,16 @@
             コードの設計改善（DDD化）単体では事業的な優先順位が上がりづらかったため、フレームワーク（.NET 6）の公式サポート終了(EOL)というビジネスリスクと紐づけて提案し、リファクタリング工数を確保した。
             最終的なLTS（.NET 10）への差分を小さく抑える中継地点として、当時最新の.NET 9を採用した。
           </p>
+
+          <figure class="process-figure">
+            <figcaption>移行期間の構成 <span>フロントエンドのルーティングで切り替え</span></figcaption>
+            <div class="migration-services">
+              <div><strong>旧API</strong><span>.NET 6</span></div>
+              <span class="migration-switch">→ 切り替え →</span>
+              <div><strong>新API</strong><span>.NET 9 + DDD</span></div>
+            </div>
+            <div class="migration-db">新旧APIで共有するDB · Aurora MySQL<span>スキーマ変更は加算的な変更に限定</span></div>
+          </figure>
 
           <h4>移行設計とリスク管理</h4>
           <ul>
@@ -336,15 +550,20 @@
             </li>
           </ul>
 
-          <h4>結果</h4>
+          <h4>現在の進捗</h4>
           <p>
-            本番障害やダウンタイムを発生させることなく、新環境への完全移行を完了。
-            ドメインロジックが独立したことで単体テストの作成が容易になり、変更容易性が向上した。
+            2026年3月から移行を進めており、現在も新旧APIを並行稼働させながら段階的な切り替えを継続している。
+            ドメインロジックの独立により、単体テストを作成しやすい構造へ改善。旧系統の完全廃止までは、DBスキーマの互換性を維持する方針としている。
           </p>
         </article>
 
         <article>
           <h3>3. 自動テスト・CI/CD環境の整備とチーム支援</h3>
+          <dl class="case-summary">
+            <div><dt>課題</dt><dd>開発速度を維持しながら、変更時の品質確認とチームの立ち上がりを支える。</dd></div>
+            <div><dt>担当</dt><dd>Vitest・Playwrightの導入、GitHub Actionsの整備、インターンのメンタリング・コードレビュー。</dd></div>
+            <div><dt>成果</dt><dd>手動リグレッション確認の負荷を低減し、自動検証・デプロイとオンボーディングを支援。</dd></div>
+          </dl>
           <p>
             開発速度と品質を両立させるための自動化基盤およびチーム支援の取り組み。
           </p>
@@ -366,6 +585,11 @@
 
         <article>
           <h3>4. 計測基盤の整備とデータ活用</h3>
+          <dl class="case-summary">
+            <div><dt>課題</dt><dd>アクセスのノイズやイベント計測の不整合により、施策評価の土台が不十分だった。</dd></div>
+            <div><dt>担当</dt><dd>ノイズの除去、イベント発火タイミングの正常化、BIツール・SQLによるダッシュボード整備。</dd></div>
+            <div><dt>成果</dt><dd>開発者以外のメンバーもKPIの進捗やファネルの離脱ポイントを確認できる環境を整備。</dd></div>
+          </dl>
           <p>
             施策評価や日常運用のためのデータ基盤整備。
             分析ツールの数字をそのまま信用せず、ノイズ（クローラー、社内アクセス）の除去やイベント発火タイミングの正常化を先行して実施した。
@@ -375,7 +599,7 @@
       </section>
 
       <section>
-        <h2>技術スタック</h2>
+        <h2 id="stack">技術スタック</h2>
         <ul>
           <li><strong>フロントエンド:</strong> TypeScript, Svelte, HTML/CSS, npm, pnpm</li>
           <li><strong>バックエンド:</strong> C# (.NET 9, ASP.NET Core), Entity Framework Core</li>
@@ -385,6 +609,20 @@
           <li><strong>運用監視・分析:</strong> Datadog (APM, Logs, Metrics), Clarity, Google Tag Manager (GTM), Meta Pixel, SQL</li>
           <li><strong>チーム・プロセス:</strong> コードレビュー, インターンメンタリング, オンボーディング支援</li>
         </ul>
+      </section>
+      <section aria-labelledby="contact">
+        <h2 id="contact">副業のご相談</h2>
+        <p>Webアプリケーションの開発、フォーム・UX改善、APIの移行・設計改善、テスト・CI/CDの整備についてご相談ください。</p>
+        <p class="bio">ご相談内容、想定する期間、ご希望の進め方をメールでお送りください。</p>
+        <p><a class="email-link" href="mailto:55shibasoccer@gmail.com?subject=%E5%89%AF%E6%A5%AD%E6%A1%88%E4%BB%B6%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">55shibasoccer@gmail.com</a></p>
+      </section>
+      <section aria-labelledby="links">
+        <h2 id="links">関連リンク</h2>
+        <p class="bio">公開リポジトリやその他の活動は、GitHubプロフィールからご覧いただけます。</p>
+        <div class="resource-links">
+          <a href="https://github.com/taka-sigure" target="_blank" rel="noopener noreferrer">GitHubプロフィール ↗</a>
+          <a href="https://github.com/taka-sigure/portfolio" target="_blank" rel="noopener noreferrer">このページのソースコード ↗</a>
+        </div>
       </section>
     </main>
 
